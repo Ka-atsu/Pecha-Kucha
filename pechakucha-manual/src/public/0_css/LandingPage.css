@@ -1,7 +1,15 @@
-.home-page {
+.landing-page {
   display: grid;
   gap: 1.5rem;
   width: 100%;
+}
+
+.landing-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.4rem;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.05);
 }
 
 .hero-banner {
@@ -72,14 +80,6 @@
   background: #ffffff;
   color: #111111;
   border: 1px solid rgba(17, 17, 17, 0.08);
-}
-
-.home-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 1.4rem;
-  border: 1px solid rgba(17, 17, 17, 0.08);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.05);
 }
 
 .format-label {
@@ -387,11 +387,11 @@
     grid-template-columns: 1fr;
   }
 
-   .tips-hero-grid {
+  .tips-hero-grid {
     grid-template-columns: 1fr;
   }
 
-   .examples-hero-grid {
+  .examples-hero-grid {
     grid-template-columns: 1fr;
   }
 
@@ -403,7 +403,7 @@
 @media (max-width: 640px) {
   .hero-banner,
   .cta-banner,
-  .home-card {
+  .landing-card {
     padding: 1.25rem;
   }
 

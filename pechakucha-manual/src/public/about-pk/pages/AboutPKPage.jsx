@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import "../../0_css/LandingPage.css";
 
 const formatHighlights = [
   {
