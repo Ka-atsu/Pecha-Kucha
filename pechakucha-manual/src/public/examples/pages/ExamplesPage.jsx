@@ -1,110 +1,123 @@
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
+
 const examples = [
   {
+    category: "DESIGN",
     title: "My Design Journey",
     description:
-      "A visual storytelling talk about growth, projects, and lessons learned.",
+      "A visual storytelling talk about growth, projects, mistakes, and lessons learned over time.",
   },
   {
+    category: "THESIS",
     title: "How We Built Our Thesis Prototype",
     description:
-      "A short narrative showing the problem, process, challenges, and result.",
+      "A presentation showing the problem, the process, the revisions, and the final result.",
   },
   {
+    category: "MOTIVATION",
     title: "Why Public Speaking Matters",
-    description: "A motivational talk with examples and practical advice.",
+    description:
+      "A short persuasive talk with practical examples and clear audience takeaways.",
+  },
+  {
+    category: "PROCESS",
+    title: "From Idea to Final Output",
+    description:
+      "A step-by-step story showing how one concept became a finished design, app, or product.",
+  },
+  {
+    category: "PORTFOLIO",
+    title: "Five Projects That Shaped My Style",
+    description:
+      "A project-based talk where each group of slides reflects one stage of creative growth.",
+  },
+  {
+    category: "EDUCATION",
+    title: "What I Learned During Our Research",
+    description:
+      "A concise academic talk focused on insights, methods, and the most important findings.",
   },
 ];
 
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
-
 export default function ExamplesPage() {
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid examples-hero-grid">
-          <div>
-            <div className="hero-badge">Sample topics</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">Sample topics</span>
 
-            <h1 className="hero-title">
-              Explore example
-              <br />
-              PechaKucha talks
-            </h1>
+              <h1 className="pk-title">
+                Example talks
+                <br />
+                that fit the format
+              </h1>
 
-            <p className="hero-description">
-              These examples show how different topics can be turned into a
-              short, visual, and well-paced presentation.
-            </p>
-          </div>
+              <p className="pk-description">
+                These examples show how different topics can still follow the
+                same 20-slide structure. The goal is not to copy them exactly,
+                but to use them as inspiration for your own talk.
+              </p>
+            </Col>
 
-          <div className="landing-card">
-            <div className="format-label">WHY EXAMPLES HELP</div>
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Why examples help</div>
+                  <div className="pk-mini-grid">
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">See topic range</div>
+                      <div className="pk-mini-text">
+                        Different subjects can still fit the same format.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Study structure</div>
+                      <div className="pk-mini-text">
+                        Notice how each talk still has a beginning, middle, and
+                        end.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Get inspiration</div>
+                      <div className="pk-mini-text">
+                        Use the examples to shape your own topic and flow.
+                      </div>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-            <div className="quick-sections">
-              <div className="quick-card">
-                <div className="quick-card-title">See possible topics</div>
-                <div className="quick-card-text">
-                  Learn how different ideas can fit the 20×20 format.
-                </div>
-              </div>
+        <section className="pk-section">
+          <SectionHeading
+            eyebrow="Examples"
+            title="Different topics, same storytelling logic."
+            text="This grid feels more useful because it gives users practical topic direction instead of decorative filler."
+          />
 
-              <div className="quick-card">
-                <div className="quick-card-title">Study structure</div>
-                <div className="quick-card-text">
-                  Notice how each talk can have a beginning, middle, and end.
-                </div>
-              </div>
-
-              <div className="quick-card">
-                <div className="quick-card-title">Get inspiration</div>
-                <div className="quick-card-text">
-                  Use examples to shape your own topic and presentation flow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <SectionHeading
-          eyebrow="Examples"
-          title="Different topics, same clear structure."
-          text="Each example below shows a possible presentation idea that can work well in a PechaKucha format."
-        />
-
-        <div className="examples-grid">
-          {examples.map((example, index) => (
-            <div key={example.title} className="landing-card example-card">
-              <div
-                className={`featured-image featured-image-${(index % 3) + 1}`}
-              />
-              <div className="featured-type">EXAMPLE</div>
-              <h3 className="featured-title">{example.title}</h3>
-              <p className="featured-description">{example.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="cta-banner">
-        <div className="cta-label">BUILD YOUR OWN</div>
-        <h2 className="cta-title">
-          Turn your topic into a short and engaging presentation.
-        </h2>
-        <p className="cta-text">
-          Use these examples as inspiration, then create your own 20-slide talk
-          with a clear story and stronger pacing.
-        </p>
-      </div>
-    </section>
+          <Row className="g-4">
+            {examples.map((example, index) => (
+              <Col md={6} lg={4} key={example.title}>
+                <Card className="pk-card h-100 example-card">
+                  <Card.Body>
+                    <div
+                      className={`example-visual example-visual-${(index % 3) + 1}`}
+                    />
+                    <div className="feature-tag mt-3">{example.category}</div>
+                    <h3 className="feature-title">{example.title}</h3>
+                    <p className="feature-text mb-0">{example.description}</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </section>
+      </Container>
+    </div>
   );
 }

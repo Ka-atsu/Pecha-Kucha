@@ -1,201 +1,191 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
 
-const featuredTalks = [
+const siteSections = [
   {
-    title: "How to Make a Great 20x20",
-    type: "PRESENTATION",
-    description:
-      "A simple introduction to the PechaKucha format and how to keep your slides visual and your story sharp.",
+    label: "LEARN",
+    title: "Understand the format",
+    text: "Start with the rules, structure, and purpose of the 20×20 presentation style.",
+    to: "/about",
   },
   {
-    title: "Designing with Constraints",
-    type: "FEATURED",
-    description:
-      "Explore how strict timing can create better pacing, clarity, and audience engagement.",
+    label: "PRACTICE",
+    title: "Improve your delivery",
+    text: "Use the tips and manual pages to build better pacing, stronger visuals, and clearer narration.",
+    to: "/tips",
   },
   {
-    title: "From Idea to Storyboard",
-    type: "GUIDE",
-    description:
-      "Turn one topic into a complete presentation flow with a clear beginning, middle, and ending.",
+    label: "PLAN",
+    title: "Map your own talk",
+    text: "Use the planner page to turn one topic into a clean 20-slide presentation flow.",
+    to: "/generator",
   },
 ];
 
-const quickSections = [
-  {
-    title: "20 Slides",
-    text: "Every talk has exactly 20 slides, which keeps the structure focused and easy to plan.",
-  },
-  {
-    title: "20 Seconds Each",
-    text: "Slides auto-advance every 20 seconds, so pacing and rehearsal become part of the design.",
-  },
-  {
-    title: "400 Seconds Total",
-    text: "You only have 6 minutes and 40 seconds, so every visual and every sentence has to count.",
-  },
+const audiences = [
+  "Students preparing reports, demos, or thesis presentations",
+  "Design and media presenters who want stronger visual storytelling",
+  "Beginners who need a simple way to structure a short presentation",
 ];
 
-const eventCards = [
+const quickFocus = [
   {
-    city: "Tokyo",
-    label: "Official City Event",
-    text: "See how local creative communities use short-form storytelling to bring people together.",
+    title: "Guide",
+    text: "Explains what PechaKucha is and how the format works.",
   },
   {
-    city: "Manila",
-    label: "Community Night",
-    text: "Prototype your own event section where users can browse city-based PechaKucha gatherings.",
+    title: "Examples",
+    text: "Shows sample topics that fit the 20-slide structure well.",
   },
   {
-    city: "Student Showcase",
-    label: "Campus Format",
-    text: "Ideal for thesis talks, portfolio storytelling, classroom presentations, and public speaking.",
+    title: "Planner",
+    text: "Helps users sketch a presentation flow before building slides.",
   },
 ];
-
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
-
-function Card({ children }) {
-  return <div className="landing-card">{children}</div>;
-}
 
 export default function HomePage() {
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid">
-          <div>
-            <div className="hero-badge">20 × 20 storytelling</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">PechaKucha Guide + Planner</span>
 
-            <h1 className="hero-title">
-              Discover stories,
-              <br />
-              ideas, and presentations.
-            </h1>
+              <h1 className="pk-title">
+                Build better
+                <br />
+                20×20 presentations
+              </h1>
 
-            <p className="hero-description">
-              A PechaKucha-inspired prototype for learning the format, reading a
-              manual, finding examples, and generating a fast 20-slide talk
-              outline.
-            </p>
+              <p className="pk-description">
+                This website helps students and presenters understand the
+                PechaKucha format, improve their delivery, and plan a stronger
+                talk using a clear 20-slide structure.
+              </p>
 
-            <div className="hero-actions">
-              <Link to="/manual" className="btn btn-dark">
-                Explore the Manual
-              </Link>
+              <div className="pk-actions">
+                <Link to="/manual" className="brand-btn">
+                  Start with the Manual
+                </Link>
 
-              <Link to="/generator" className="btn btn-light">
-                Generate a Talk
-              </Link>
-            </div>
-          </div>
+                <Link to="/generator" className="ghost-btn">
+                  Open Talk Planner
+                </Link>
+              </div>
+            </Col>
 
-          <Card>
-            <div className="format-label">PRESENTATION FORMAT</div>
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Website focus</div>
+                  <div className="pk-stat">Learn • Practice • Plan</div>
 
-            <div className="format-value">20 × 20</div>
+                  <div className="pk-mini-grid">
+                    {quickFocus.map((item) => (
+                      <div key={item.title} className="pk-mini-card">
+                        <div className="pk-mini-title">{item.title}</div>
+                        <div className="pk-mini-text">{item.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-            <div className="quick-sections">
-              {quickSections.map((item) => (
-                <div key={item.title} className="quick-card">
-                  <div className="quick-card-title">{item.title}</div>
-                  <div className="quick-card-text">{item.text}</div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      <div>
-        <SectionHeading
-          eyebrow="Featured Presentations"
-          title="Start with examples people actually want to watch."
-          text="Use large cards, short descriptions, and a simple editorial layout so the home page feels like a discovery platform, not a dashboard."
-        />
-
-        <div className="featured-grid">
-          {featuredTalks.map((item, index) => (
-            <Card key={item.title}>
-              <div className={`featured-image featured-image-${index + 1}`} />
-              <div className="featured-type">{item.type}</div>
-              <h3 className="featured-title">{item.title}</h3>
-              <p className="featured-description">{item.description}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <div className="split-grid">
-        <Card>
+        <section className="pk-section">
           <SectionHeading
-            eyebrow="How It Works"
-            title="A format built on rhythm."
-            text="Keep this section simple and educational so first-time users understand the rules immediately."
+            eyebrow="What you can do here"
+            title="A clearer website structure."
+            text="Instead of trying to feel like the official platform, this version focuses on teaching the format and helping users plan their own talk."
           />
 
-          <div className="steps-list">
-            {[
-              "Choose one clear topic.",
-              "Plan a 20-slide visual sequence.",
-              "Keep text minimal and image-led.",
-              "Practice for 20 seconds per slide.",
-              "Deliver with strong pacing and energy.",
-            ].map((step, index) => (
-              <div key={step} className="step-item">
-                <div className="step-number">{index + 1}</div>
-                <div className="step-text">{step}</div>
-              </div>
+          <Row className="g-4">
+            {siteSections.map((item) => (
+              <Col md={6} lg={4} key={item.title}>
+                <Card className="pk-card h-100">
+                  <Card.Body>
+                    <div className="feature-tag">{item.label}</div>
+                    <h3 className="feature-title">{item.title}</h3>
+                    <p className="feature-text">{item.text}</p>
+                    <Link to={item.to} className="section-link">
+                      Explore page
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </Col>
             ))}
+          </Row>
+        </section>
+
+        <section className="pk-section">
+          <Row className="g-4">
+            <Col lg={6}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <SectionHeading
+                    eyebrow="Who this is for"
+                    title="Made for school and presentation practice."
+                    text="This project works best as a learning and planning tool for academic, creative, and short-form presentation use."
+                  />
+
+                  <ul className="pk-list">
+                    {audiences.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <SectionHeading
+                    eyebrow="Why this direction works"
+                    title="Less confusion, better identity."
+                    text="The site now has one strong purpose: guide users through the PechaKucha format and help them prepare a better talk."
+                  />
+
+                  <div className="pk-stack">
+                    <div className="pk-note">
+                      Clear purpose instead of mixed messaging
+                    </div>
+                    <div className="pk-note">
+                      Better visual branding with a dark-purple theme
+                    </div>
+                    <div className="pk-note">
+                      React-Bootstrap layout with custom CSS personality
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
+
+        <section className="pk-cta">
+          <div className="cta-label">READY TO START?</div>
+          <h2 className="cta-title">
+            Learn the rules first, then plan your own 20-slide talk.
+          </h2>
+          <p className="cta-text">
+            This makes the website feel focused, useful, and much more
+            presentable for a thesis prototype.
+          </p>
+          <div className="pk-actions">
+            <Link to="/about" className="brand-btn">
+              Understand PechaKucha
+            </Link>
+            <Link to="/generator" className="ghost-btn">
+              Go to Planner
+            </Link>
           </div>
-        </Card>
-
-        <Card>
-          <SectionHeading
-            eyebrow="Communities & Events"
-            title="Make the prototype feel social."
-            text="The official site highlights city events and community discovery, so your home page should also suggest a global storytelling network."
-          />
-
-          <div className="event-list">
-            {eventCards.map((item) => (
-              <div key={item.city} className="event-card">
-                <div className="event-label">{item.label}</div>
-                <div className="event-city">{item.city}</div>
-                <p className="event-text">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-
-      <div className="cta-banner">
-        <div className="cta-label">READY TO BUILD</div>
-
-        <h2 className="cta-title">
-          Turn your topic into a fast 20-slide presentation outline.
-        </h2>
-
-        <p className="cta-text">
-          Keep the home page focused on discovery and action. Your generator
-          becomes the main conversion point for users who are ready to create.
-        </p>
-
-        <div>
-          <Link to="/generator" className="btn btn-light">
-            Open Generator
-          </Link>
-        </div>
-      </div>
-    </section>
+        </section>
+      </Container>
+    </div>
   );
 }

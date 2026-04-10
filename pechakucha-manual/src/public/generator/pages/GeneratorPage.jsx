@@ -1,141 +1,185 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Card, Form } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
 
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
+const slidePhases = [
+  {
+    range: "Slides 1–4",
+    title: "Hook and context",
+    text: "Introduce the topic, why it matters, and what the audience should care about.",
+  },
+  {
+    range: "Slides 5–8",
+    title: "Problem or challenge",
+    text: "Show the issue, need, or question that drives the presentation.",
+  },
+  {
+    range: "Slides 9–14",
+    title: "Process or main points",
+    text: "Explain the method, journey, evidence, or key stages of the story.",
+  },
+  {
+    range: "Slides 15–18",
+    title: "Results or insight",
+    text: "Highlight what happened, what changed, or what the audience should notice.",
+  },
+  {
+    range: "Slides 19–20",
+    title: "Closing takeaway",
+    text: "End with a final reflection, conclusion, or memorable call to action.",
+  },
+];
 
 export default function GeneratorPage() {
+  const [topic, setTopic] = useState("My presentation topic");
+  const [audience, setAudience] = useState("Classmates / panelists");
+  const [goal, setGoal] = useState("Explain one clear idea");
+
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid generator-hero-grid">
-          <div>
-            <div className="hero-badge">Official resource</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">Talk planner</span>
 
-            <h1 className="hero-title">
-              Continue your
-              <br />
-              PechaKucha journey
-            </h1>
+              <h1 className="pk-title">
+                Plan your
+                <br />
+                20-slide talk
+              </h1>
 
-            <p className="hero-description">
-              This website is focused on helping you understand the PechaKucha
-              format through tutorials, guides, tips, and examples. To explore
-              the official PechaKucha platform, visit their main website.
-            </p>
+              <p className="pk-description">
+                Instead of redirecting users away, this page now supports the
+                actual goal of the project: helping them map a topic into a
+                stronger PechaKucha presentation flow.
+              </p>
 
-            <div className="hero-actions">
-              <a
-                href="https://www.pechakucha.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-dark"
-              >
-                Visit PechaKucha
-              </a>
-
-              <Link to="/manual" className="btn btn-light">
-                Back to Manual
-              </Link>
-            </div>
-          </div>
-
-          <div className="landing-card">
-            <div className="format-label">THIS PAGE IS FOR</div>
-
-            <div className="quick-sections">
-              <div className="quick-card">
-                <div className="quick-card-title">Learning the format</div>
-                <div className="quick-card-text">
-                  Understand how the 20×20 presentation style works.
-                </div>
+              <div className="pk-actions">
+                <Link to="/manual" className="brand-btn">
+                  Review the Manual
+                </Link>
+                <Link to="/examples" className="ghost-btn">
+                  See Example Topics
+                </Link>
               </div>
+            </Col>
 
-              <div className="quick-card">
-                <div className="quick-card-title">Exploring examples</div>
-                <div className="quick-card-text">
-                  Study sample ideas, structure, and presentation flow.
-                </div>
-              </div>
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Best use of this page</div>
+                  <div className="pk-mini-grid">
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Choose a topic</div>
+                      <div className="pk-mini-text">
+                        Decide what one message your talk should communicate.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Map the flow</div>
+                      <div className="pk-mini-text">
+                        Break the talk into opening, middle, result, and ending.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Build slides later</div>
+                      <div className="pk-mini-text">
+                        Use the plan first, then create your visuals in
+                        PowerPoint or Canva.
+                      </div>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-              <div className="quick-card">
-                <div className="quick-card-title">
-                  Finding the official site
-                </div>
-                <div className="quick-card-text">
-                  Visit the PechaKucha website for broader community and
-                  platform access.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <section className="pk-section">
+          <Row className="g-4">
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <SectionHeading
+                    eyebrow="Planner input"
+                    title="Set your topic, audience, and goal."
+                    text="This makes the page feel more interactive even before you add a full generator feature."
+                  />
 
-      <div>
-        <SectionHeading
-          eyebrow="About this page"
-          title="This project serves as a tutorial guide."
-          text="Instead of generating live presentation outlines, this section now directs users to the official PechaKucha website while keeping your project focused on education."
-        />
+                  <Form className="pk-form">
+                    <Form.Group className="mb-3">
+                      <Form.Label>Topic</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={topic}
+                        onChange={(e) => setTopic(e.target.value)}
+                        placeholder="Enter your topic"
+                      />
+                    </Form.Group>
 
-        <div className="featured-grid">
-          <div className="landing-card">
-            <div className="featured-type">LEARN</div>
-            <h3 className="featured-title">Study the format</h3>
-            <p className="featured-description">
-              Use the manual, tips, and examples in this project to understand
-              how a PechaKucha presentation works.
-            </p>
-          </div>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Audience</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={audience}
+                        onChange={(e) => setAudience(e.target.value)}
+                        placeholder="Who are you presenting to?"
+                      />
+                    </Form.Group>
 
-          <div className="landing-card">
-            <div className="featured-type">EXPLORE</div>
-            <h3 className="featured-title">Visit the official platform</h3>
-            <p className="featured-description">
-              The official website gives users access to the wider PechaKucha
-              experience beyond this tutorial-based project.
-            </p>
-          </div>
+                    <Form.Group>
+                      <Form.Label>Main goal</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={goal}
+                        onChange={(e) => setGoal(e.target.value)}
+                        placeholder="What should people understand?"
+                      />
+                    </Form.Group>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
 
-          <div className="landing-card">
-            <div className="featured-type">FOCUS</div>
-            <h3 className="featured-title">Keep your thesis scope clear</h3>
-            <p className="featured-description">
-              This keeps your website focused on teaching and guiding users,
-              instead of trying to replicate the official platform.
-            </p>
-          </div>
-        </div>
-      </div>
+            <Col lg={7}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Suggested presentation flow</div>
+                  <h3 className="planner-main-title">{topic}</h3>
+                  <p className="section-text">
+                    Audience: <strong>{audience}</strong>
+                    <br />
+                    Goal: <strong>{goal}</strong>
+                  </p>
 
-      <div className="cta-banner">
-        <div className="cta-label">OFFICIAL WEBSITE</div>
+                  <div className="planner-grid">
+                    {slidePhases.map((phase) => (
+                      <div key={phase.range} className="planner-phase">
+                        <div className="planner-range">{phase.range}</div>
+                        <div className="planner-phase-title">{phase.title}</div>
+                        <div className="planner-phase-text">{phase.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-        <h2 className="cta-title">Ready to explore more about PechaKucha?</h2>
-
-        <p className="cta-text">
-          Use this tutorial site to learn the basics, then continue to the
-          official PechaKucha website for the full platform experience.
-        </p>
-
-        <div>
-          <a
-            href="https://www.pechakucha.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-light"
-          >
-            Open PechaKucha
-          </a>
-        </div>
-      </div>
-    </section>
+        <section className="pk-cta">
+          <div className="cta-label">NEXT MOVE</div>
+          <h2 className="cta-title">
+            Use the planner first, then turn the flow into real slides.
+          </h2>
+          <p className="cta-text">
+            This keeps the page aligned with your thesis scope while still
+            feeling useful and interactive.
+          </p>
+        </section>
+      </Container>
+    </div>
   );
 }

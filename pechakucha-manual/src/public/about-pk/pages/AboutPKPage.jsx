@@ -1,178 +1,155 @@
-import { Link } from "react-router";
-import "../../0_css/LandingPage.css";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
 
-const formatHighlights = [
+const formatRules = [
   {
-    title: "20 Slides",
-    text: "Each presentation uses exactly 20 slides, creating a fixed structure that is easy to understand and plan.",
+    title: "20 slides",
+    text: "The structure stays fixed, which makes the presentation easier to plan and easier to follow.",
   },
   {
-    title: "20 Seconds Each",
-    text: "Every slide advances automatically after 20 seconds, which helps speakers focus on pacing and timing.",
+    title: "20 seconds each",
+    text: "Slides auto-advance, so timing and rehearsal become part of the presentation design.",
   },
   {
-    title: "6 Minutes 40 Seconds",
-    text: "The total talk length stays short, making PechaKucha ideal for energetic, focused, and memorable presentations.",
+    title: "6 minutes 40 seconds total",
+    text: "The short duration pushes the speaker to stay focused, visual, and clear.",
   },
 ];
 
-const benefits = [
-  "Encourages clear and concise storytelling",
-  "Helps presenters avoid overcrowded slides",
-  "Improves pacing and audience engagement",
-  "Works well for portfolios, pitches, and class reports",
+const identityCards = [
+  {
+    label: "THIS SITE IS",
+    title: "A learning and planning tool",
+    text: "It teaches the format, gives examples, and helps users sketch their own 20-slide talk.",
+  },
+  {
+    label: "THIS SITE IS NOT",
+    title: "The official PechaKucha platform",
+    text: "It does not need to copy the full community network, event system, or platform ecosystem.",
+  },
+  {
+    label: "WHY THAT MATTERS",
+    title: "Your thesis scope stays clear",
+    text: "A focused prototype is easier to defend, easier to design, and more believable as an academic project.",
+  },
 ];
-
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
-
-function Card({ children }) {
-  return <div className="landing-card">{children}</div>;
-}
 
 export default function AboutPKPage() {
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid">
-          <div>
-            <div className="hero-badge">About the format</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">About the format</span>
 
-            <h1 className="hero-title">
-              What makes
-              <br />
-              PechaKucha different?
-            </h1>
+              <h1 className="pk-title">
+                What is
+                <br />
+                PechaKucha?
+              </h1>
 
-            <p className="hero-description">
-              PechaKucha is a presentation format built around speed, clarity,
-              and visual storytelling. Instead of long slide decks filled with
-              text, speakers present 20 slides for 20 seconds each.
-            </p>
+              <p className="pk-description">
+                PechaKucha is a presentation style built around speed, timing,
+                and visual storytelling. Speakers use exactly 20 slides, and
+                each slide stays on screen for 20 seconds.
+              </p>
 
-            <div className="hero-actions">
-              <Link to="/manual" className="btn btn-dark">
-                Read the Manual
-              </Link>
-
-              <Link to="/generator" className="btn btn-light">
-                Try the Generator
-              </Link>
-            </div>
-          </div>
-
-          <Card>
-            <div className="format-label">FORMAT OVERVIEW</div>
-
-            <div className="format-value">20 × 20</div>
-
-            <div className="quick-sections">
-              {formatHighlights.map((item) => (
-                <div key={item.title} className="quick-card">
-                  <div className="quick-card-title">{item.title}</div>
-                  <div className="quick-card-text">{item.text}</div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      <div className="split-grid">
-        <Card>
-          <SectionHeading
-            eyebrow="Why It Works"
-            title="A format built for focus."
-            text="PechaKucha keeps presentations short and structured, so speakers are pushed to communicate only the most important ideas."
-          />
-
-          <p className="section-text">
-            Because slides move automatically, presenters need to think about
-            rhythm, transitions, and storytelling. This creates talks that feel
-            more dynamic and engaging for the audience.
-          </p>
-        </Card>
-
-        <Card>
-          <SectionHeading
-            eyebrow="Best Uses"
-            title="Ideal for creative and academic presentations."
-            text="This format works especially well when you want to explain an idea visually without relying too much on text."
-          />
-
-          <div className="steps-list">
-            {benefits.map((item, index) => (
-              <div key={item} className="step-item">
-                <div className="step-number">{index + 1}</div>
-                <div className="step-text">{item}</div>
+              <div className="pk-actions">
+                <Link to="/manual" className="brand-btn">
+                  Read the Manual
+                </Link>
+                <Link to="/examples" className="ghost-btn">
+                  View Examples
+                </Link>
               </div>
+            </Col>
+
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Format summary</div>
+                  <div className="pk-stat">20 × 20</div>
+
+                  <div className="pk-mini-grid">
+                    {formatRules.map((item) => (
+                      <div key={item.title} className="pk-mini-card">
+                        <div className="pk-mini-title">{item.title}</div>
+                        <div className="pk-mini-text">{item.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
+
+        <section className="pk-section">
+          <SectionHeading
+            eyebrow="Project direction"
+            title="This website should explain, not imitate."
+            text="The strongest version of your project is a clear educational prototype that teaches the format and helps users plan their own presentation."
+          />
+
+          <Row className="g-4">
+            {identityCards.map((item) => (
+              <Col md={6} lg={4} key={item.title}>
+                <Card className="pk-card h-100">
+                  <Card.Body>
+                    <div className="feature-tag">{item.label}</div>
+                    <h3 className="feature-title">{item.title}</h3>
+                    <p className="feature-text">{item.text}</p>
+                  </Card.Body>
+                </Card>
+              </Col>
             ))}
-          </div>
-        </Card>
-      </div>
+          </Row>
+        </section>
 
-      <div>
-        <SectionHeading
-          eyebrow="About This Prototype"
-          title="Learn the format, then build your own talk."
-          text="This project is designed to help users understand PechaKucha, explore examples, and quickly generate a structured presentation outline."
-        />
+        <section className="pk-section">
+          <Row className="g-4">
+            <Col lg={6}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <SectionHeading
+                    eyebrow="Why the format works"
+                    title="A structure built for focus."
+                    text="Because the slide timing is fixed, presenters are forced to choose only the most important visuals and ideas."
+                  />
+                  <p className="feature-text mb-0">
+                    That makes PechaKucha especially useful for school reports,
+                    creative work, portfolios, concept pitches, and thesis
+                    presentations where clarity matters.
+                  </p>
+                </Card.Body>
+              </Card>
+            </Col>
 
-        <div className="featured-grid">
-          <Card>
-            <div className="featured-type">LEARN</div>
-            <h3 className="featured-title">Understand the rules</h3>
-            <p className="featured-description">
-              Discover how the 20×20 structure works and why it creates stronger
-              pacing and storytelling.
-            </p>
-          </Card>
-
-          <Card>
-            <div className="featured-type">EXPLORE</div>
-            <h3 className="featured-title">See practical applications</h3>
-            <p className="featured-description">
-              Use the format for portfolios, classroom reports, design pitches,
-              and short public presentations.
-            </p>
-          </Card>
-
-          <Card>
-            <div className="featured-type">CREATE</div>
-            <h3 className="featured-title">Draft a presentation faster</h3>
-            <p className="featured-description">
-              The generator helps users turn one topic into a 20-slide flow with
-              a clearer structure from beginning to end.
-            </p>
-          </Card>
-        </div>
-      </div>
-
-      <div className="cta-banner">
-        <div className="cta-label">START YOUR PRESENTATION</div>
-
-        <h2 className="cta-title">
-          Build a simple, fast, and engaging 20-slide talk.
-        </h2>
-
-        <p className="cta-text">
-          Use this page to explain the format first, then guide users toward the
-          manual or generator as the next action.
-        </p>
-
-        <div>
-          <Link to="/generator" className="btn btn-light">
-            Open Generator
-          </Link>
-        </div>
-      </div>
-    </section>
+            <Col lg={6}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <SectionHeading
+                    eyebrow="What users get here"
+                    title="A simpler learning path."
+                    text="Users move through the site in a clean flow: understand the format, study the guide, review examples, then plan their own talk."
+                  />
+                  <div className="pk-stack">
+                    <div className="pk-note">About → understand the format</div>
+                    <div className="pk-note">
+                      Manual + Tips → improve delivery
+                    </div>
+                    <div className="pk-note">
+                      Examples + Planner → apply what they learned
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
+      </Container>
+    </div>
   );
 }

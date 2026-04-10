@@ -1,114 +1,107 @@
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
+
 const sections = [
   {
-    title: "1. Understand the format",
-    text: "A PechaKucha talk uses exactly 20 slides, and each slide stays on screen for 20 seconds.",
+    title: "Understand the 20×20 rule",
+    text: "A PechaKucha talk uses exactly 20 slides, and each slide stays visible for 20 seconds.",
   },
   {
-    title: "2. Pick one clear message",
-    text: "Your whole presentation should revolve around one central idea, not many unrelated points.",
+    title: "Choose one strong message",
+    text: "Your presentation should revolve around one clear central idea instead of several unrelated points.",
   },
   {
-    title: "3. Use visual slides",
-    text: "Use images, short phrases, and minimal text. The speaker should do most of the explaining.",
+    title: "Build visual slides",
+    text: "Use images, short phrases, and minimal text so the audience listens to you instead of reading the screen.",
   },
   {
-    title: "4. Practice the timing",
-    text: "Because slides auto-advance, you need to rehearse your pacing carefully.",
+    title: "Organize your story",
+    text: "Plan a beginning, middle, and end so the talk feels like a short story instead of random information.",
   },
   {
-    title: "5. End with a strong takeaway",
-    text: "The final slides should leave the audience with one memorable point or action.",
+    title: "Practice the timing",
+    text: "Because slides move automatically, rehearsal is essential if you want the delivery to feel natural.",
+  },
+  {
+    title: "Finish with one takeaway",
+    text: "End with a clear final point so the audience remembers the purpose of your talk.",
   },
 ];
 
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
-
 export default function ManualPage() {
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid manual-hero-grid">
-          <div>
-            <div className="hero-badge">Step-by-step guide</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">Step-by-step guide</span>
 
-            <h1 className="hero-title">
-              Learn how to build
-              <br />a PechaKucha talk
-            </h1>
+              <h1 className="pk-title">
+                Build your talk
+                <br />
+                one step at a time
+              </h1>
 
-            <p className="hero-description">
-              Follow this simple manual to understand the format, shape your
-              message, design visual slides, and present with better timing and
-              confidence.
-            </p>
-          </div>
+              <p className="pk-description">
+                Use this guide to understand the format, shape your message,
+                organize your story, and prepare a presentation that is short,
+                visual, and easy to follow.
+              </p>
+            </Col>
 
-          <div className="landing-card">
-            <div className="format-label">QUICK OVERVIEW</div>
-            <div className="quick-sections">
-              <div className="quick-card">
-                <div className="quick-card-title">20 slides</div>
-                <div className="quick-card-text">
-                  A fixed structure keeps the presentation focused.
-                </div>
-              </div>
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Quick overview</div>
+                  <div className="pk-mini-grid">
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Fixed structure</div>
+                      <div className="pk-mini-text">
+                        20 slides keeps the talk focused.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Auto timing</div>
+                      <div className="pk-mini-text">
+                        20 seconds per slide shapes the pacing.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">One message</div>
+                      <div className="pk-mini-text">
+                        Every slide should support the same core idea.
+                      </div>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-              <div className="quick-card">
-                <div className="quick-card-title">20 seconds each</div>
-                <div className="quick-card-text">
-                  Auto-advancing slides make pacing part of the design.
-                </div>
-              </div>
+        <section className="pk-section">
+          <SectionHeading
+            eyebrow="Manual"
+            title="A cleaner guide for first-time users."
+            text="These steps make the page feel like an actual tutorial instead of just a list of random notes."
+          />
 
-              <div className="quick-card">
-                <div className="quick-card-title">Clear message</div>
-                <div className="quick-card-text">
-                  Every slide should support one central idea.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <SectionHeading
-          eyebrow="Manual"
-          title="Build your talk one step at a time."
-          text="Use these sections as a simple guide for planning, designing, and rehearsing your presentation."
-        />
-
-        <div className="manual-list">
-          {sections.map((section, index) => (
-            <div key={section.title} className="landing-card manual-card">
-              <div className="manual-number">{index + 1}</div>
-              <div>
-                <h3 className="featured-title">{section.title}</h3>
-                <p className="featured-description">{section.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="cta-banner">
-        <div className="cta-label">NEXT STEP</div>
-        <h2 className="cta-title">
-          Turn the guide into your own 20-slide talk.
-        </h2>
-        <p className="cta-text">
-          Once you understand the format, you can start outlining your topic and
-          building a stronger presentation flow.
-        </p>
-      </div>
-    </section>
+          <Row className="g-4">
+            {sections.map((section, index) => (
+              <Col md={6} key={section.title}>
+                <Card className="pk-card h-100 manual-card">
+                  <Card.Body>
+                    <div className="manual-step-number">{index + 1}</div>
+                    <h3 className="feature-title mt-3">{section.title}</h3>
+                    <p className="feature-text mb-0">{section.text}</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </section>
+      </Container>
+    </div>
   );
 }

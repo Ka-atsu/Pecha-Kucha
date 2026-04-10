@@ -1,99 +1,88 @@
-const tips = [
-  "Start with a story, not a definition.",
-  "Use one idea per slide.",
-  "Keep text very short.",
-  "Use strong visuals that support your narration.",
-  "Practice until your timing feels natural.",
-  "Avoid reading directly from the screen.",
-];
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SectionHeading from "../../../components/SectionHeading";
 
-function SectionHeading({ eyebrow, title, text }) {
-  return (
-    <div className="section-heading">
-      <div className="section-eyebrow">{eyebrow}</div>
-      <h2 className="section-title">{title}</h2>
-      {text && <p className="section-text">{text}</p>}
-    </div>
-  );
-}
+const tips = [
+  "Start with a story, question, or striking point instead of a dictionary-style definition.",
+  "Keep one idea per slide so the audience can follow your presentation more easily.",
+  "Use short text only. Let your voice do most of the explanation.",
+  "Choose images that support the narration instead of decorating the slide without purpose.",
+  "Practice out loud until the timing feels natural with the automatic slide changes.",
+  "Do not read directly from the screen. Speak to the audience and use the slide as support.",
+];
 
 export default function TipsPage() {
   return (
-    <section className="landing-page">
-      <div className="hero-banner">
-        <div className="hero-grid tips-hero-grid">
-          <div>
-            <div className="hero-badge">Presentation advice</div>
+    <div className="pk-page">
+      <Container>
+        <section className="pk-hero">
+          <Row className="g-4 align-items-stretch">
+            <Col lg={7}>
+              <span className="pk-badge">Presentation advice</span>
 
-            <h1 className="hero-title">
-              Tips for a clearer,
-              <br />
-              stronger talk
-            </h1>
+              <h1 className="pk-title">
+                Small presentation fixes,
+                <br />
+                big improvement
+              </h1>
 
-            <p className="hero-description">
-              Good PechaKucha presentations rely on pacing, visuals, and
-              confident delivery. Use these tips to make your slides more
-              engaging and easier to present.
-            </p>
-          </div>
+              <p className="pk-description">
+                Strong PechaKucha talks depend on pacing, clarity, confidence,
+                and visuals. These tips help users make their slides easier to
+                present and easier to remember.
+              </p>
+            </Col>
 
-          <div className="landing-card">
-            <div className="format-label">QUICK REMINDER</div>
+            <Col lg={5}>
+              <Card className="pk-card h-100">
+                <Card.Body>
+                  <div className="small-label">Quick reminder</div>
+                  <div className="pk-mini-grid">
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Keep it visual</div>
+                      <div className="pk-mini-text">
+                        The slide should support the speaker, not replace them.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Keep it focused</div>
+                      <div className="pk-mini-text">
+                        One idea per slide keeps the rhythm clean.
+                      </div>
+                    </div>
+                    <div className="pk-mini-card">
+                      <div className="pk-mini-title">Keep it practiced</div>
+                      <div className="pk-mini-text">
+                        Timing matters because slides auto-advance.
+                      </div>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </section>
 
-            <div className="quick-sections">
-              <div className="quick-card">
-                <div className="quick-card-title">Keep it visual</div>
-                <div className="quick-card-text">
-                  Let your narration explain more than the slide text.
-                </div>
-              </div>
+        <section className="pk-section">
+          <SectionHeading
+            eyebrow="Tips"
+            title="Better delivery starts with simple habits."
+            text="These cards work better visually than the old plain tip blocks and fit the new dark theme much more naturally."
+          />
 
-              <div className="quick-card">
-                <div className="quick-card-title">Keep it focused</div>
-                <div className="quick-card-text">
-                  One idea per slide makes the presentation easier to follow.
-                </div>
-              </div>
-
-              <div className="quick-card">
-                <div className="quick-card-title">Keep it practiced</div>
-                <div className="quick-card-text">
-                  Timing matters because slides move automatically.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <SectionHeading
-          eyebrow="Tips"
-          title="Small improvements make a big difference."
-          text="These simple tips can help you create a presentation that feels more natural, more visual, and more memorable."
-        />
-
-        <div className="tips-list">
-          {tips.map((tip, index) => (
-            <div key={tip} className="landing-card tip-card">
-              <div className="tip-number">Tip {index + 1}</div>
-              <p className="tip-text">{tip}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="cta-banner">
-        <div className="cta-label">KEEP IMPROVING</div>
-        <h2 className="cta-title">
-          Practice the format and make every slide count.
-        </h2>
-        <p className="cta-text">
-          Strong visuals, clear pacing, and confident delivery can turn a short
-          presentation into something memorable.
-        </p>
-      </div>
-    </section>
+          <Row className="g-4">
+            {tips.map((tip, index) => (
+              <Col md={6} lg={4} key={tip}>
+                <Card className="pk-card h-100">
+                  <Card.Body>
+                    <div className="tip-label">Tip {index + 1}</div>
+                    <p className="feature-text mb-0 mt-3">{tip}</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </section>
+      </Container>
+    </div>
   );
 }

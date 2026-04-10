@@ -1,5 +1,6 @@
 import AppRoutes from "./routes";
-import "../public/0_css/LandingPage.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../public/0_css/pk-theme.css";
 
 export default function App() {
   return <AppRoutes />;
