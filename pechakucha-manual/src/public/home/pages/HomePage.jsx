@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import "../../0_css/LandingPage.css";
 
 const featuredTalks = [
   {
@@ -56,216 +57,59 @@ const eventCards = [
 
 function SectionHeading({ eyebrow, title, text }) {
   return (
-    <div style={{ marginBottom: "1.25rem" }}>
-      <div
-        style={{
-          display: "inline-block",
-          padding: "0.35rem 0.7rem",
-          borderRadius: "999px",
-          background: "#fff",
-          border: "1px solid rgba(17,17,17,0.08)",
-          fontSize: "0.78rem",
-          fontWeight: 700,
-          letterSpacing: "0.04em",
-          marginBottom: "0.9rem",
-        }}
-      >
-        {eyebrow}
-      </div>
-
-      <h2
-        style={{
-          margin: 0,
-          fontSize: "2.3rem",
-          lineHeight: 1.05,
-          letterSpacing: "-0.04em",
-        }}
-      >
-        {title}
-      </h2>
-
-      {text && (
-        <p
-          style={{
-            marginTop: "0.85rem",
-            maxWidth: "720px",
-            fontSize: "1rem",
-            lineHeight: 1.75,
-            color: "#5f5f5f",
-          }}
-        >
-          {text}
-        </p>
-      )}
+    <div className="section-heading">
+      <div className="section-eyebrow">{eyebrow}</div>
+      <h2 className="section-title">{title}</h2>
+      {text && <p className="section-text">{text}</p>}
     </div>
   );
 }
 
 function Card({ children }) {
-  return (
-    <div
-      style={{
-        background: "#ffffff",
-        borderRadius: "24px",
-        padding: "1.4rem",
-        border: "1px solid rgba(17,17,17,0.08)",
-        boxShadow: "0 16px 34px rgba(0,0,0,0.05)",
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className="landing-card">{children}</div>;
 }
 
 export default function HomePage() {
   return (
-    <section style={{ display: "grid", gap: "1.5rem" }}>
-      <div
-        style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #f3ece1 100%)",
-          borderRadius: "32px",
-          padding: "2rem",
-          border: "1px solid rgba(17,17,17,0.08)",
-          boxShadow: "0 20px 50px rgba(0,0,0,0.06)",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.35fr 0.9fr",
-            gap: "1.5rem",
-          }}
-        >
+    <section className="landing-page">
+      <div className="hero-banner">
+        <div className="hero-grid">
           <div>
-            <div
-              style={{
-                display: "inline-block",
-                marginBottom: "1rem",
-                padding: "0.45rem 0.8rem",
-                borderRadius: "999px",
-                background: "#111111",
-                color: "#ffffff",
-                fontWeight: 700,
-                fontSize: "0.8rem",
-              }}
-            >
-              20 × 20 storytelling
-            </div>
+            <div className="hero-badge">20 × 20 storytelling</div>
 
-            <h1
-              style={{
-                fontSize: "4.2rem",
-                lineHeight: 0.95,
-                letterSpacing: "-0.06em",
-                margin: 0,
-                maxWidth: "700px",
-              }}
-            >
+            <h1 className="hero-title">
               Discover stories,
               <br />
               ideas, and presentations.
             </h1>
 
-            <p
-              style={{
-                fontSize: "1.06rem",
-                lineHeight: 1.8,
-                color: "#5f5f5f",
-                maxWidth: "690px",
-                marginTop: "1.2rem",
-              }}
-            >
+            <p className="hero-description">
               A PechaKucha-inspired prototype for learning the format, reading a
               manual, finding examples, and generating a fast 20-slide talk
               outline.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "0.85rem",
-                flexWrap: "wrap",
-                marginTop: "1.4rem",
-              }}
-            >
-              <Link
-                to="/manual"
-                style={{
-                  textDecoration: "none",
-                  padding: "0.95rem 1.2rem",
-                  borderRadius: "14px",
-                  background: "#111111",
-                  color: "#ffffff",
-                  fontWeight: 700,
-                }}
-              >
+            <div className="hero-actions">
+              <Link to="/manual" className="btn btn-dark">
                 Explore the Manual
               </Link>
 
-              <Link
-                to="/generator"
-                style={{
-                  textDecoration: "none",
-                  padding: "0.95rem 1.2rem",
-                  borderRadius: "14px",
-                  background: "#ffffff",
-                  color: "#111111",
-                  fontWeight: 700,
-                  border: "1px solid rgba(17,17,17,0.08)",
-                }}
-              >
+              <Link to="/generator" className="btn btn-light">
                 Generate a Talk
               </Link>
             </div>
           </div>
 
           <Card>
-            <div
-              style={{ color: "#777", fontSize: "0.82rem", fontWeight: 700 }}
-            >
-              PRESENTATION FORMAT
-            </div>
+            <div className="format-label">PRESENTATION FORMAT</div>
 
-            <div
-              style={{
-                marginTop: "1rem",
-                fontSize: "4rem",
-                lineHeight: 0.9,
-                fontWeight: 900,
-                letterSpacing: "-0.06em",
-              }}
-            >
-              20 × 20
-            </div>
+            <div className="format-value">20 × 20</div>
 
-            <div
-              style={{
-                marginTop: "1rem",
-                display: "grid",
-                gap: "0.9rem",
-              }}
-            >
+            <div className="quick-sections">
               {quickSections.map((item) => (
-                <div
-                  key={item.title}
-                  style={{
-                    padding: "0.9rem 1rem",
-                    borderRadius: "18px",
-                    background: "#f8f4ed",
-                  }}
-                >
-                  <div style={{ fontWeight: 800, marginBottom: "0.25rem" }}>
-                    {item.title}
-                  </div>
-                  <div
-                    style={{
-                      color: "#666",
-                      lineHeight: 1.6,
-                      fontSize: "0.95rem",
-                    }}
-                  >
-                    {item.text}
-                  </div>
+                <div key={item.title} className="quick-card">
+                  <div className="quick-card-title">{item.title}</div>
+                  <div className="quick-card-text">{item.text}</div>
                 </div>
               ))}
             </div>
@@ -280,69 +124,19 @@ export default function HomePage() {
           text="Use large cards, short descriptions, and a simple editorial layout so the home page feels like a discovery platform, not a dashboard."
         />
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1rem",
-          }}
-        >
+        <div className="featured-grid">
           {featuredTalks.map((item, index) => (
             <Card key={item.title}>
-              <div
-                style={{
-                  height: "170px",
-                  borderRadius: "18px",
-                  background:
-                    index === 0
-                      ? "linear-gradient(135deg, #111111, #4b5563)"
-                      : index === 1
-                        ? "linear-gradient(135deg, #d9c7a5, #f0e7d8)"
-                        : "linear-gradient(135deg, #d7e4f2, #f8fbff)",
-                  marginBottom: "1rem",
-                }}
-              />
-
-              <div
-                style={{
-                  display: "inline-block",
-                  fontSize: "0.74rem",
-                  fontWeight: 800,
-                  color: "#666",
-                  marginBottom: "0.7rem",
-                }}
-              >
-                {item.type}
-              </div>
-
-              <h3
-                style={{
-                  margin: 0,
-                  fontSize: "1.25rem",
-                  lineHeight: 1.2,
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {item.title}
-              </h3>
-
-              <p
-                style={{ color: "#666", lineHeight: 1.7, marginTop: "0.8rem" }}
-              >
-                {item.description}
-              </p>
+              <div className={`featured-image featured-image-${index + 1}`} />
+              <div className="featured-type">{item.type}</div>
+              <h3 className="featured-title">{item.title}</h3>
+              <p className="featured-description">{item.description}</p>
             </Card>
           ))}
         </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.1fr",
-          gap: "1rem",
-        }}
-      >
+      <div className="split-grid">
         <Card>
           <SectionHeading
             eyebrow="How It Works"
@@ -350,7 +144,7 @@ export default function HomePage() {
             text="Keep this section simple and educational so first-time users understand the rules immediately."
           />
 
-          <div style={{ display: "grid", gap: "0.9rem" }}>
+          <div className="steps-list">
             {[
               "Choose one clear topic.",
               "Plan a 20-slide visual sequence.",
@@ -358,33 +152,9 @@ export default function HomePage() {
               "Practice for 20 seconds per slide.",
               "Deliver with strong pacing and energy.",
             ].map((step, index) => (
-              <div
-                key={step}
-                style={{
-                  display: "flex",
-                  gap: "0.85rem",
-                  alignItems: "center",
-                  padding: "0.9rem 1rem",
-                  borderRadius: "16px",
-                  background: "#f8f4ed",
-                }}
-              >
-                <div
-                  style={{
-                    width: "34px",
-                    height: "34px",
-                    borderRadius: "999px",
-                    background: "#111111",
-                    color: "#fff",
-                    display: "grid",
-                    placeItems: "center",
-                    fontWeight: 800,
-                    flexShrink: 0,
-                  }}
-                >
-                  {index + 1}
-                </div>
-                <div style={{ fontWeight: 600 }}>{step}</div>
+              <div key={step} className="step-item">
+                <div className="step-number">{index + 1}</div>
+                <div className="step-text">{step}</div>
               </div>
             ))}
           </div>
@@ -397,87 +167,32 @@ export default function HomePage() {
             text="The official site highlights city events and community discovery, so your home page should also suggest a global storytelling network."
           />
 
-          <div style={{ display: "grid", gap: "0.9rem" }}>
+          <div className="event-list">
             {eventCards.map((item) => (
-              <div
-                key={item.city}
-                style={{
-                  padding: "1rem 1.05rem",
-                  borderRadius: "18px",
-                  background: "#ffffff",
-                  border: "1px solid rgba(17,17,17,0.08)",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "#777",
-                    fontWeight: 800,
-                  }}
-                >
-                  {item.label}
-                </div>
-                <div
-                  style={{
-                    marginTop: "0.35rem",
-                    fontSize: "1.15rem",
-                    fontWeight: 800,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  {item.city}
-                </div>
-                <p style={{ color: "#666", lineHeight: 1.7, marginBottom: 0 }}>
-                  {item.text}
-                </p>
+              <div key={item.city} className="event-card">
+                <div className="event-label">{item.label}</div>
+                <div className="event-city">{item.city}</div>
+                <p className="event-text">{item.text}</p>
               </div>
             ))}
           </div>
         </Card>
       </div>
 
-      <div
-        style={{
-          background: "#111111",
-          color: "#ffffff",
-          borderRadius: "30px",
-          padding: "2rem",
-          display: "grid",
-          gap: "1rem",
-        }}
-      >
-        <div style={{ fontSize: "0.8rem", fontWeight: 800, color: "#d0d0d0" }}>
-          READY TO BUILD
-        </div>
-        <h2
-          style={{
-            margin: 0,
-            fontSize: "2.5rem",
-            lineHeight: 1.05,
-            letterSpacing: "-0.05em",
-            maxWidth: "700px",
-          }}
-        >
+      <div className="cta-banner">
+        <div className="cta-label">READY TO BUILD</div>
+
+        <h2 className="cta-title">
           Turn your topic into a fast 20-slide presentation outline.
         </h2>
-        <p style={{ color: "#d1d5db", maxWidth: "720px", lineHeight: 1.75 }}>
+
+        <p className="cta-text">
           Keep the home page focused on discovery and action. Your generator
           becomes the main conversion point for users who are ready to create.
         </p>
 
         <div>
-          <Link
-            to="/generator"
-            style={{
-              textDecoration: "none",
-              display: "inline-block",
-              padding: "0.95rem 1.2rem",
-              borderRadius: "14px",
-              background: "#ffffff",
-              color: "#111111",
-              fontWeight: 800,
-            }}
-          >
+          <Link to="/generator" className="btn btn-light">
             Open Generator
           </Link>
         </div>
