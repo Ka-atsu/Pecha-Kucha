@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Form } from "react-bootstrap";
 import SectionHeading from "../../../components/SectionHeading";
 
@@ -31,7 +30,7 @@ const slidePhases = [
   },
 ];
 
-export default function GeneratorPage() {
+export default function GeneratorSection() {
   const [topic, setTopic] = useState("My presentation topic");
   const [audience, setAudience] = useState("Classmates / panelists");
   const [goal, setGoal] = useState("Explain one clear idea");
@@ -57,19 +56,19 @@ export default function GeneratorPage() {
               </p>
 
               <div className="pk-actions">
-                <Link to="/manual" className="brand-btn">
+                <a href="#manual" className="brand-btn">
                   Review the Manual
-                </Link>
-                <Link to="/examples" className="ghost-btn">
+                </a>
+                <a href="#examples" className="ghost-btn">
                   See Example Topics
-                </Link>
+                </a>
               </div>
             </Col>
 
             <Col lg={5}>
               <Card className="pk-card h-100">
                 <Card.Body>
-                  <div className="small-label">Best use of this page</div>
+                  <div className="small-label">Best use of this section</div>
                   <div className="pk-mini-grid">
                     <div className="pk-mini-card">
                       <div className="pk-mini-title">Choose a topic</div>
@@ -105,7 +104,7 @@ export default function GeneratorPage() {
                   <SectionHeading
                     eyebrow="Planner input"
                     title="Set your topic, audience, and goal."
-                    text="This makes the page feel more interactive even before you add a full generator feature."
+                    text="This makes the section feel more interactive even before you add a full generator feature."
                   />
 
                   <Form className="pk-form">
@@ -175,7 +174,7 @@ export default function GeneratorPage() {
             Use the planner first, then turn the flow into real slides.
           </h2>
           <p className="cta-text">
-            This keeps the page aligned with your thesis scope while still
+            This keeps the section aligned with your thesis scope while still
             feeling useful and interactive.
           </p>
         </section>

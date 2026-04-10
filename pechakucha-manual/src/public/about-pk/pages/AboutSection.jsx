@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import SectionHeading from "../../../components/SectionHeading";
 
@@ -35,7 +34,7 @@ const identityCards = [
   },
 ];
 
-export default function AboutPKPage() {
+export default function AboutSection() {
   return (
     <div className="pk-page">
       <Container>
@@ -57,12 +56,12 @@ export default function AboutPKPage() {
               </p>
 
               <div className="pk-actions">
-                <Link to="/manual" className="brand-btn">
+                <a href="#manual" className="brand-btn">
                   Read the Manual
-                </Link>
-                <Link to="/examples" className="ghost-btn">
+                </a>
+                <a href="#examples" className="ghost-btn">
                   View Examples
-                </Link>
+                </a>
               </div>
             </Col>
 

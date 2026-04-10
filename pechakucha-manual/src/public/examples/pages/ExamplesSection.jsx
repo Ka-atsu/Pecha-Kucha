@@ -40,7 +40,7 @@ const examples = [
   },
 ];
 
-export default function ExamplesPage() {
+export default function ExamplesSection() {
   return (
     <div className="pk-page">
       <Container>

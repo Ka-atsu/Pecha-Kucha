@@ -10,7 +10,7 @@ const tips = [
   "Do not read directly from the screen. Speak to the audience and use the slide as support.",
 ];
 
-export default function TipsPage() {
+export default function TipsSection() {
   return (
     <div className="pk-page">
       <Container>

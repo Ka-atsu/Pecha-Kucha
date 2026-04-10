@@ -28,7 +28,7 @@ const sections = [
   },
 ];
 
-export default function ManualPage() {
+export default function ManualSection() {
   return (
     <div className="pk-page">
       <Container>

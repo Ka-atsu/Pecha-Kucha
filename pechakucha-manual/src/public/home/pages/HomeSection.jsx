@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import SectionHeading from "../../../components/SectionHeading";
 
@@ -7,19 +6,19 @@ const siteSections = [
     label: "LEARN",
     title: "Understand the format",
     text: "Start with the rules, structure, and purpose of the 20×20 presentation style.",
-    to: "/about",
+    to: "#about-pk",
   },
   {
     label: "PRACTICE",
     title: "Improve your delivery",
-    text: "Use the tips and manual pages to build better pacing, stronger visuals, and clearer narration.",
-    to: "/tips",
+    text: "Use the tips and manual sections to build better pacing, stronger visuals, and clearer narration.",
+    to: "#tips",
   },
   {
     label: "PLAN",
     title: "Map your own talk",
-    text: "Use the planner page to turn one topic into a clean 20-slide presentation flow.",
-    to: "/generator",
+    text: "Use the planner section to turn one topic into a clean 20-slide presentation flow.",
+    to: "#generator",
   },
 ];
 
@@ -44,7 +43,7 @@ const quickFocus = [
   },
 ];
 
-export default function HomePage() {
+export default function HomeSection() {
   return (
     <div className="pk-page">
       <Container>
@@ -66,13 +65,13 @@ export default function HomePage() {
               </p>
 
               <div className="pk-actions">
-                <Link to="/manual" className="brand-btn">
+                <a href="#manual" className="brand-btn">
                   Start with the Manual
-                </Link>
+                </a>
 
-                <Link to="/generator" className="ghost-btn">
+                <a href="#generator" className="ghost-btn">
                   Open Talk Planner
-                </Link>
+                </a>
               </div>
             </Col>
 
@@ -111,9 +110,9 @@ export default function HomePage() {
                     <div className="feature-tag">{item.label}</div>
                     <h3 className="feature-title">{item.title}</h3>
                     <p className="feature-text">{item.text}</p>
-                    <Link to={item.to} className="section-link">
-                      Explore page
-                    </Link>
+                    <a href={item.to} className="section-link">
+                      Explore section
+                    </a>
                   </Card.Body>
                 </Card>
               </Col>
@@ -177,12 +176,12 @@ export default function HomePage() {
             presentable for a thesis prototype.
           </p>
           <div className="pk-actions">
-            <Link to="/about" className="brand-btn">
+            <a href="#about-pk" className="brand-btn">
               Understand PechaKucha
-            </Link>
-            <Link to="/generator" className="ghost-btn">
+            </a>
+            <a href="#generator" className="ghost-btn">
               Go to Planner
-            </Link>
+            </a>
           </div>
         </section>
       </Container>
